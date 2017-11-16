@@ -343,7 +343,12 @@ $\xi$~--- так называемый регрессор, равный
 
 Выражение для матрицы~$D(q)$ может быть найдено из формулы для кинетической энергии с учетом того, что справедливо
 \begin{equation}\label{eq_K_in_form_with_D}
-    K = \frac{1}{2} \, \dot{q}^T D(q) \dot{q},
+    \left\{
+    \begin{aligned}
+        \!& K = \frac{1}{2} \, \dot{q}^T D(q) \dot{q}, \\
+        \!& D(q) = D^T\!(q),
+    \end{aligned}
+    \right.
 \end{equation}
 для матрицы $C(q,\dot{q})$~--- из выражения для $D(q)$ в соответствии с формулами:
 \begin{gather}
@@ -363,7 +368,7 @@ $\xi$~--- так называемый регрессор, равный
     \end{bmatrix}^T\!\!\!\!\!\ldotp
 \end{equation}
 
-Выражение для кинетической энергии в форме~\eqref{eq_K_in_form_with_D} может быть получено из уравнения~\eqref{eq_eq_for_K_for_linear_model} с учетом формул~\eqref{eq_transform_of_g_v_omega}, \eqref{eq_work_of_lin_jacobians} и \eqref{eq_work_of_ang_jacobians}:
+Выражение для кинетической энергии в форме, иллюстрируемой первым из уравнений~\eqref{eq_K_in_form_with_D}, может быть получено из уравнения~\eqref{eq_eq_for_K_for_linear_model} с учетом формул~\eqref{eq_transform_of_g_v_omega}, \eqref{eq_work_of_lin_jacobians} и \eqref{eq_work_of_ang_jacobians}:
 \begin{gather}
     K = \sum_{i=1}^5 \biggl( \frac{1}{2} m_i \cdot \left( -{}^0R_i^T J_{vi} \dot{q} \right)^T \!\!\cdot \left(-{}^0R_i^T J_{vi} \dot{q}\right) + \frac{1}{2} \left( -{}^0R_i^T J_{\omega i} \dot{q} \right)^T \!\!\cdot \mathcal{I}^{i}_i \cdot \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) + \notag\\
     %
@@ -373,7 +378,7 @@ $\xi$~--- так называемый регрессор, равный
     %
     = \frac{1}{2} \dot{q}^T \Biggl(\sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{x} \,\, + \notag \\
     %
-    + \,\, 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{y} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{z}\Bigr) \Biggr) \dot{q},
+    + \,\, 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{y} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{z}\Bigr) \Biggr) \dot{q}, \label{eq_getting_form_with_D_for_K}
 \end{gather}
 при преобразованиях которого учтено то, что
 \begin{equation*}
@@ -411,15 +416,33 @@ $\xi$~--- так называемый регрессор, равный
     \end{bmatrix}
     =
     \begin{bmatrix}
-        \dot{q}^T \! J_x \dot{q} \\
-        \dot{q}^T \! J_y \dot{q} \\
-        \dot{q}^T \! J_z \dot{q}
+        \dot{q}^T \! J_{xi} \dot{q} \\
+        \dot{q}^T \! J_{yi} \dot{q} \\
+        \dot{q}^T \! J_{zi} \dot{q}
     \end{bmatrix}\!\!,
 \end{equation}
 где
 \begin{align}
-    &J_x =  - \bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{2\}} + \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
-    &J_y = \phantom{-}\bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{1\}} - \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
-    &J_z =  - \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{1\}} + \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{2\}} \ldotp
+    &J_{xi} =  - \bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{2\}} + \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
+    &J_{yi} = \phantom{-}\bigl( J_{vi}^{\{3\}} \bigr)^T J_{\omega i}^{\{1\}} - \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{3\}}, \\
+    &J_{zi} =  - \bigl( J_{vi}^{\{2\}} \bigr)^T J_{\omega i}^{\{1\}} + \bigl( J_{vi}^{\{1\}} \bigr)^T J_{\omega i}^{\{2\}} \ldotp
 \end{align}
+
+Стоит отметить тот факт, что выражение из~\eqref{eq_getting_form_with_D_for_K}, обозначим которое через $\mathcal{D}(q)$, равное
+\begin{gather}
+    \mathcal{D}(q) = \sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{x} \,\, + \notag \\
+    %
+    + \,\, 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{y} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{z}\Bigr),
+\end{gather}
+в общем случае не равно матрице $D(q)$.
+При этом получить последнюю из матрицы $\mathcal{D}(q)$ можно с помощью следующей формулы:
+\begin{equation}
+    D_{ij} =
+    \begin{cases}
+        0.5 (\mathcal{D}_{ij} + \mathcal{D}_{ji}), & i \ne j; \\
+        \mathcal{D}_{ij}, & i = j;
+    \end{cases}
+\end{equation}
+где $\mathcal{D}_{ij}$~--- элемент матрицы $\mathcal{D}(q)$, стоящий на пересечении $i$-ой строки и $j$-го столбца\lefteqn.\footnote{Для дополнительных пояснений попробуйте обратиться к Приложению~\ref{app_confuse_with_d}.}
+
 \newpage

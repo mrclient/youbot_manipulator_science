@@ -1,0 +1,54 @@
+\ESKDappendix{рекомендуемое}{Дополнительные пояснения к порядку расчета матрицы инерции}\label{app_confuse_with_d}
+Рассмотрим следующие два математических выражения:
+\begin{multline}\label{eq_confuse_with_d_example_1}
+    \begin{bmatrix}
+        a_1 & a_2 & a_3
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        b_{11} & b_{12} & b_{13} \\
+        b_{21} & b_{22} & b_{23} \\
+        b_{31} & b_{32} & b_{33} \\
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        a_1 \\ a_2 \\ a_3
+    \end{bmatrix}
+    = b_{11} a_1^2 + b_{22} a_2^2 + b_{33} a_3^2 + {} \\
+    {} + (b_{12} + b_{21}) a_1 a_2 + (b_{13} + b_{31}) a_1 a_3 + (b_{23} + b_{32}) a_2 a_3,
+\end{multline}
+
+\begin{multline}\label{eq_confuse_with_d_example_2}
+    \begin{bmatrix}
+    a_1 & a_2 & a_3
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        c_{11} & c_{12} & c_{13} \\
+        c_{12} & c_{22} & c_{23} \\
+        c_{13} & c_{23} & c_{33} \\
+        \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+    a_1 \\ a_2 \\ a_3
+    \end{bmatrix}
+    = c_{11} a_1^2 + c_{22} a_2^2 + c_{33} a_3^2 + {} \\
+    {} + 2 c_{12} a_1 a_2 + 2 c_{13} a_1 a_3 + 2 c_{23} a_2 a_3 \ldotp
+\end{multline}
+Легко видеть, что при выполнении равенств
+\begin{gather}
+    c_{11} = b_{11},
+    \quad
+    c_{22} = b_{22},
+    \quad
+    c_{33} = b_{33},
+    \\
+    c_{12} = 0.5(b_{12}+b_{21}),
+    \quad
+    c_{13} = 0.5(b_{13}+b_{31}),
+    \quad
+    c_{23} = 0.5(b_{23}+b_{32})
+\end{gather}
+выражения~\eqref{eq_confuse_with_d_example_1} и~\eqref{eq_confuse_with_d_example_2} тоже будут равны.
+
+Подобная ситуация наблюдается и в отношении матриц $\mathcal{D}(q)$ и $D(q)$.
