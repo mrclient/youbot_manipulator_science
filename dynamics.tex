@@ -209,7 +209,7 @@
 \begin{equation}
     \chi_i =
     \begin{bmatrix}
-        m_i & m_i x_{ci} & m_i y_{ci} & m_i y_{ci} & I_{i,\,xx} & I_{i,\,yy} & I_{i,\,zz} & I_{i,\,xy} & I_{i,\,xz} & I_{i,\,yz}
+        m_i & m_i x_{ci} & m_i y_{ci} & m_i z_{ci} & I_{i,\,xx} & I_{i,\,yy} & I_{i,\,zz} & I_{i,\,xy} & I_{i,\,xz} & I_{i,\,yz}
     \end{bmatrix}^T\!\!\!\!;
 \end{equation}
 $\xi$~--- так называемый регрессор, равный
@@ -370,15 +370,15 @@ $\xi$~--- так называемый регрессор, равный
 
 Выражение для кинетической энергии в форме, иллюстрируемой первым из уравнений~\eqref{eq_K_in_form_with_D}, может быть получено из уравнения~\eqref{eq_eq_for_K_for_linear_model} с учетом формул~\eqref{eq_transform_of_g_v_omega}, \eqref{eq_work_of_lin_jacobians} и \eqref{eq_work_of_ang_jacobians}:
 \begin{gather}
-    K = \sum_{i=1}^5 \biggl( \frac{1}{2} m_i \cdot \left( -{}^0R_i^T J_{vi} \dot{q} \right)^T \!\!\cdot \left(-{}^0R_i^T J_{vi} \dot{q}\right) + \frac{1}{2} \left( -{}^0R_i^T J_{\omega i} \dot{q} \right)^T \!\!\cdot \mathcal{I}^{i}_i \cdot \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) + \notag\\
+    K = \sum_{i=1}^5 \biggl( \frac{1}{2} m_i \cdot \left( -{}^0R_i^T J_{vi} \dot{q} \right)^T \!\!\cdot \left(-{}^0R_i^T J_{vi} \dot{q}\right) + \frac{1}{2} \left( -{}^0R_i^T J_{\omega i} \dot{q} \right)^T \!\!\cdot \mathcal{I}^{i}_i \cdot \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) + {}\notag\\
     %
-    + (m_ir^i_{i,\,ci})^T \cdot \Bigl( \left( -{}^0R_i^T J_{vi} \dot{q} \right) \times \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) \Bigr) \biggr) = \notag\\
+    {} + (m_ir^i_{i,\,ci})^T \cdot \Bigl( \left( -{}^0R_i^T J_{vi} \dot{q} \right) \times \left( -{}^0R_i^T J_{\omega i} \dot{q} \right) \Bigr) \biggr) = {}\notag\\
     %
-    = \sum_{i=1}^5 \biggl(\frac{1}{2} m_i \dot{q}^T J_{vi}^T J_{vi} \dot{q} \!+\! \frac{1}{2} \dot{q}^T J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} \dot{q} \!+\! (m_i \underbrace{{}^0\!R_i r^i_{i,\,ci}}_{\displaystyle r^0_{i,\,ci}})^T \!\!\cdot \Bigl( \left( J_{vi} \dot{q} \right) \times \left( J_{\omega i} \dot{q} \right) \Bigr) \!\biggr) = \notag \\
+    {} = \sum_{i=1}^5 \biggl(\frac{1}{2} m_i \dot{q}^T J_{vi}^T J_{vi} \dot{q} \!+\! \frac{1}{2} \dot{q}^T J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} \dot{q} \!+\! (m_i \underbrace{{}^0\!R_i r^i_{i,\,ci}}_{\displaystyle r^0_{i,\,ci}})^T \!\!\cdot \Bigl( \left( J_{vi} \dot{q} \right) \times \left( J_{\omega i} \dot{q} \right) \Bigr) \!\biggr) = {}\notag \\
     %
-    = \frac{1}{2} \dot{q}^T \Biggl(\sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{x} \,\, + \notag \\
+    {} = \frac{1}{2} \dot{q}^T \Biggl(\sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{xi}  + {}\notag \\
     %
-    + \,\, 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{y} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{z}\Bigr) \Biggr) \dot{q}, \label{eq_getting_form_with_D_for_K}
+    {} + 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{yi} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{zi}\Bigr) \Biggr) \dot{q}, \label{eq_getting_form_with_D_for_K}
 \end{gather}
 при преобразованиях которого учтено то, что
 \begin{equation*}
@@ -430,9 +430,9 @@ $\xi$~--- так называемый регрессор, равный
 
 Стоит отметить тот факт, что выражение из~\eqref{eq_getting_form_with_D_for_K}, обозначим которое через $\mathcal{D}(q)$, равное
 \begin{gather}
-    \mathcal{D}(q) = \sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{x} \,\, + \notag \\
+    \mathcal{D}(q) = \sum_{i=1}^5 \Bigl(m_i J_{vi}^T J_{vi} + J_{\omega i}^T \, {}^0\!R_i \, \mathcal{I}^{i}_i \, {}^0\!R_i^T J_{\omega i} + 2 \cdot x\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{xi} \,\, + {}\notag \\
     %
-    + \,\, 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{y} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{z}\Bigr),
+    {} + 2 \cdot y\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{yi} + 2 \cdot z\{ m_i r^0_{i,\,ci} \} \!\cdot\! J_{zi}\Bigr),
 \end{gather}
 в общем случае не равно матрице $D(q)$.
 При этом получить последнюю из матрицы $\mathcal{D}(q)$ можно с помощью следующей формулы:
