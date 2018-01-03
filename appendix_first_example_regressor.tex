@@ -1,0 +1,152 @@
+\ESKDappendix{рекомендуемое}{Исключение из регрессора модели плоского двухзвенного манипулятора нулевых и линейно зависимых столбцов}\label{app_first_example_regressor}
+Регрессор модели плоского двухзвенного манипулятора равен:
+\begin{equation}
+    \bar{\xi} =
+    \begin{bmatrix}
+        \xi_{1,1} & \ddot{q_1} & \dot{q_1} & \sign(\dot{q_1}) & 1 & \xi_{1,2} & 0 & 0 & 0 & 0\\
+        O_{1\times10} & 0 & 0 & 0 & 0 & \xi_{1,1} & \ddot{q_2} & \dot{q_2} & \sign(\dot{q_2}) & 1
+    \end{bmatrix}\!\!,
+\end{equation}
+где
+\begin{gather}
+    \xi_{1,1} =
+    \begin{bmatrix}
+        \mathcal{L}_1 \{L_{1,1}\} & \mathcal{L}_1 \{L_{1,2}\} & \ldots & \mathcal{L}_1 \{L_{1,10}\}
+    \end{bmatrix}\!\!,
+    \\
+    \xi_{1,2} =
+    \begin{bmatrix}
+        \mathcal{L}_1 \{L_{2,1}\} & \mathcal{L}_1 \{L_{2,2}\} & \ldots & \mathcal{L}_1 \{L_{2,10}\}
+    \end{bmatrix}\!\!,
+    \\
+    \xi_{2,2} =
+    \begin{bmatrix}
+        \mathcal{L}_2 \{L_{2,1}\} & \mathcal{L}_2 \{L_{2,2}\} & \ldots & \mathcal{L}_2 \{L_{2,10}\}
+    \end{bmatrix}\!\!\ldotp
+\end{gather}
+
+После исключения нулевых столбцов, проводимого с учетом уравне-\linebreak %very dirty trick
+ний~\eqref{eq_first_regr_comp_for_2}--\eqref{eq_last_regr_comp_for_2}, регрессор $\bar{\xi}$ <<потеряет>> столбцы с номерами, составляющими множество $\{4,5,6,8,9,10,17,19,21,22,23,24\}$.
+
+С~учетом того, что остальные столбцы~$\bar{\xi}$ имеют вид:
+\begin{align}
+    &\bar{\xi}_{\{1\}} =
+    \begin{bmatrix}
+        a_1^2 \ddot{q}_1 - a_1 g c_1 \\ 0
+    \end{bmatrix}\!\!,
+    &
+    &\bar{\xi}_{\{11\}} =
+    \begin{bmatrix}
+        \ddot{q}_1 \\ 0
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{2\}} =
+    \begin{bmatrix}
+        2 a_1 \ddot{q}_1 - g c_1 \\ 0
+    \end{bmatrix}\!\!,
+    &
+    &\bar{\xi}_{\{12\}} =
+    \begin{bmatrix}
+        \dot{q}_1 \\ 0
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{3\}} =
+    \begin{bmatrix}
+        g s_1 \\ 0
+    \end{bmatrix}\!\!,
+    &
+    &\bar{\xi}_{\{13\}} =
+    \begin{bmatrix}
+        \sign(\ddot{q}_1) \\ 0
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{7\}} =
+    \begin{bmatrix}
+        \ddot{q}_1 \\ 0
+    \end{bmatrix}\!\!,
+    &
+    &\bar{\xi}_{\{14\}} =
+    \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}\!\!,
+\end{align}
+
+\begin{align}
+    &\bar{\xi}_{\{15\}} =
+    \begin{bmatrix}
+        \begin{split}
+            (a_1^2 + a_2^2 + 2 a_1 a_2 c_2) \ddot{q}_1 &+ (a_2^2 + a_1 a_2 c_2 )\ddot{q}_2 + 2 a_1 a_2 \dot{q}_2 s_2 \dot{q}_1 + {} \\ {} &+ a_1 a_2 \dot{q}_2 s_2 \dot{q}_2 - a_2 g c_{12} - a_1 g c_1
+            \\
+            (a_2^2 + a_1 a_2 c_2) \ddot{q}_1 &+  a_2^2 \ddot{q}_2 - a_1 a_2 \dot{q}_1 s_2 \dot{q}_1 - a_2 g c_{12}
+        \end{split}
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{16\}} =
+    \begin{bmatrix}
+        2 (a_2 + a_1 c_2) \ddot{q}_1 + (2 a_2 + a_1 c_2) \ddot{q}_2 + 2 a_1 \dot{q}_2 s_2 \dot{q}_1 + a_1 \dot{q}_2 s_2 \dot{q}_2 - g c_{12} \\
+        (2 a_2 + a_1 c_2) \ddot{q}_1 + 2 a_2 \ddot{q}_2 - a_1 \dot{q}_1 s_2 \dot{q}_1 - g c_{12}
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{18\}} =
+    \begin{bmatrix}
+       2 a_1 s_2 \ddot{q}_1 + a_1 s_2 \ddot{q}_2 - 2 a_1 \dot{q}_2 c_2 \dot{q}_1 - a_1 c_2 \dot{q}_2^2 - g s_{12} \\
+       a_1 s_2 \ddot{q}_1 + a_1 \dot{q}_1 c_2 \dot{q}_1 - g s_{12}
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{20\}} =
+    \begin{bmatrix}
+        \ddot{q}_1 + \ddot{q}_2 \\ \ddot{q}_1 + \ddot{q}_2
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{25\}} =
+    \begin{bmatrix}
+        0 \\ \ddot{q}_2
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{26\}} =
+    \begin{bmatrix}
+        0 \\ \dot{q}_2
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{27\}} =
+    \begin{bmatrix}
+        0 \\ \sign(\ddot{q}_2)
+    \end{bmatrix}\!\!,
+    \\
+    &\bar{\xi}_{\{28\}} =
+    \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}\!\!,
+\end{align}
+результаты выполнения алгоритма, описанного в подразделе~\ref{part_lin_depend_columns_deleting}, будут следующими:
+\begin{itemize}
+    \item в качестве пары линейно зависимых столбцов будут найдены
+    \begin{equation}
+        \bar{\xi}_{\{7\}} = \bar{\xi}_{\{11\}};
+    \end{equation}
+    для дальнейшего повествования предположим, что в качестве реакции на этот факт были исключены столбец~$\bar{\xi}_{\{7\}}$ и соответствующий ему параметр~$I_{1,\,zz}$, а параметр~$I_{a,1}$, соответствующий в свою очередь одиннадцатому столбцу, был заменен суммой~$I_{a,1} + I_{1,\,zz}$;
+    \item при поиске триплета линейно зависимых столбцов будет определено, что:
+    \begin{equation}
+        \bar{\xi}_{\{1\}} = a_1 \bar{\xi}_{\{2\}} - a_1^2 \bar{\xi}_{\{11\}};
+    \end{equation}
+    реакция~--- исключение столбца~$\bar{\xi}_{\{1\}}$, параметра~$m_1$, и следующие замены:
+    \begin{gather}
+        m_1 x_{c1} \rightarrow m_1 x_{c1} + a_1 m_1, \\
+        I_{a,1} + I_{1,\,zz} \rightarrow I_{a,1} + I_{1,\,zz} - a_1^2 m_1;
+    \end{gather}
+    \item при поиске зависимостей типа <<один столбец от трех других>> никаких результатов найдено не будет;
+    \item на последнем этапе алгоритм укажет на то, что
+    \begin{equation}
+        \bar{\xi}_{\{15\}} = a_2 \bar{\xi}_{\{16\}} - a_2^2 \bar{\xi}_{\{20\}} + a_1 \bar{\xi}_{\{2\}} - a_1^2 \bar{\xi}_{\{11\}};
+    \end{equation}
+    реакция~--- исключение столбца~$\bar{\xi}_{\{15\}}$, параметра~$m_2$, и следующие замены:
+    \begin{gather}
+        m_2 x_{c2} \rightarrow m_2 x_{c2} + a_2 m_2, \label{eq_final_change_1}\\
+        I_{2,\,yy} \rightarrow I_{2,\,yy} - a_2^2 m_2, \\
+        m_1 x_{c1} + a_1 m_1 \rightarrow m_1 x_{c1} + a_1 m_1 + a_1 m_2, \\
+        I_{a,1} + I_{1,\,zz} - a_1^2 m_1 \rightarrow I_{a,1} + I_{1,\,zz} - a_1^2 m_1 - a_1^2 m_2 \ldotp \label{eq_final_change_last}
+    \end{gather}
+\end{itemize}
+Иных зависимостей между столбцами регрессора нет.
+
+В~заключение отметим, что при использовании результатов идентификации в каких-либо расчетах, значения, полученные для комбинаций, указанных в правой части выражений~\eqref{eq_final_change_1}--\eqref{eq_final_change_last}, следует приписать соответственно параметрам $m_2 x_{c2}$, $I_{2,\,yy}$, $m_1 x_{c1}$ и $I_{a,1}$, а параметры $m_2$, $m_1$ и $I_{1,\,zz}$ принять равными нулю.
